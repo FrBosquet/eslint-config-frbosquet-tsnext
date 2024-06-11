@@ -1,0 +1,14 @@
+{
+  "name": "eslint-config-frbosquet-tsnext",
+  "version": "1.0.0",
+  "description": "Opinionated eslint config",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "eslint"
+  ],
+  "author": "Fran Bosquet",
+  "license": "ISC"
+}
