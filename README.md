@@ -1,5 +1,5 @@
 # eslint-config-frbosquet-tsnext
 
-Opinionated eslint confif
+Opinionated eslint config
 
 ## Installation
