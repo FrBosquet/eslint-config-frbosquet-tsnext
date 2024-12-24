@@ -2,7 +2,7 @@
   "name": "eslint-config-frbosquet-tsnext",
   "version": "2.0.1",
   "description": "Opinionated eslint config",
-  "main": "eslint.config.mjs",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
