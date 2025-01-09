@@ -1,60 +1,38 @@
-import simpleImportSort from "eslint-plugin-simple-import-sort";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-import js from "@eslint/js";
-import { FlatCompat } from "@eslint/eslintrc";
+import { FlatCompat } from '@eslint/eslintrc'
+import stylistic from '@stylistic/eslint-plugin'
+import tanstackQuery from '@tanstack/eslint-plugin-query'
+import tailwind from 'eslint-plugin-tailwindcss'
+import { dirname } from 'path'
+import { fileURLToPath } from 'url'
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+
 const compat = new FlatCompat({
     baseDirectory: __dirname,
-    recommendedConfig: js.configs.recommended,
-    allConfig: js.configs.all
-});
+})
 
-export default [{
-    ignores: ["components/ui/**/*", "**/next.config.js", "**/jest.config.js"],
-}, ...compat.extends(
-    "next/core-web-vitals",
-    "plugin:tailwindcss/recommended",
-    "plugin:prettier/recommended",
-    "plugin:react/recommended",
-), {
-    plugins: {
-        "simple-import-sort": simpleImportSort,
+const eslintConfig = [
+    ...compat.extends('next/core-web-vitals', 'next/typescript'),
+    ...tailwind.configs['flat/recommended'],
+    ...tanstackQuery.configs['flat/recommended'],
+    {
+        plugins: {
+            '@stylistic': stylistic
+        },
+        rules: {
+            '@stylistic/indent': ['error', 2],
+            'semi': ['error', 'never'],
+            'quotes': ['error', 'single'],
+            'max-len': ['error', { code: 80, ignoreUrls: true, ignoreStrings: true, ignoreComments: true, ignoreTemplateLiterals: true }],
+            'react/react-in-jsx-scope': 'off',
+            'react/jsx-max-props-per-line': ['error', { 'maximum': { 'single': 2, 'multi': 1 } }],
+            'tailwindcss/no-custom-classname': ['error']
+        }
     },
+    {
+        ignores: ['components/ui/**/*'],
+    }
+]
 
-    rules: {
-        "prettier/prettier": ["error", {
-            trailingComma: "none",
-            singleQuote: true,
-            semi: false,
-            tabWidth: 2,
-        }],
-
-        quotes: ["error", "single"],
-        "no-console": "error",
-        "jsx-a11y/alt-text": 0,
-        "react/react-in-jsx-scope": 0,
-        "@typescript-eslint/explicit-function-return-type": "off",
-        "@typescript-eslint/strict-boolean-expressions": "off",
-        "@typescript-eslint/space-before-function-paren": "off",
-        "@typescript-eslint/no-misused-promises": "off",
-        "@typescript-eslint/no-non-null-assertion": "off",
-        "@typescript-eslint/no-unsafe-argument": "off",
-        "@typescript-eslint/no-non-null-asserted-optional-chain": "off",
-        "@typescript-eslint/unbound-method": "off",
-
-        "react/jsx-sort-props": ["warn", {
-            callbacksLast: true,
-            shorthandFirst: true,
-            shorthandLast: false,
-            ignoreCase: true,
-            noSortAlphabetically: false,
-            reservedFirst: true,
-        }],
-
-        "simple-import-sort/imports": "error",
-        "simple-import-sort/exports": "error",
-    },
-}];
+export default eslintConfig

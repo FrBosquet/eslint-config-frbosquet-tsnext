@@ -5,6 +5,7 @@ Opinionated eslint config. Meant to be used with:
 - Next app router
 - Tailwind
 - Typescript
+- Tanstack query
 
 ## Installation
 
@@ -22,10 +23,15 @@ yarn add -D eslint-config-frbosquet-tsnext
 
 ### Usage
 
-In your eslintrc:
+In your eslint.config.mjs file:
 
 ```
-  "extends": [
-    "frbosquet-tsnext"
+  import frbosquet from 'eslint-config-frbosquet-tsnext'
+
+  export default [
+    ...frbosquet,
+    {
+      // your custom rules
+    }
   ]
 ```
