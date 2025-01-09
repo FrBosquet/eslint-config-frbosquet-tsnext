@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-frbosquet-tsnext",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Opinionated eslint config",
   "main": "eslint.config.mjs",
   "type": "module",
