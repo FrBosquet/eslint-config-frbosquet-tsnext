@@ -29,9 +29,6 @@ const eslintConfig = [
             'react/jsx-max-props-per-line': ['error', { 'maximum': { 'single': 2, 'multi': 1 } }],
             'tailwindcss/no-custom-classname': ['error']
         }
-    },
-    {
-        ignores: ['components/ui/**/*'],
     }
 ]
 

@@ -7,6 +7,8 @@ Opinionated eslint config. Meant to be used with:
 - Typescript
 - Tanstack query
 
+And with the flat config format of eslint
+
 ## Installation
 
 ```
@@ -32,6 +34,24 @@ In your eslint.config.mjs file:
     ...frbosquet,
     {
       // your custom rules
+    }
+  ]
+```
+
+#### Usage with shadcn/ui
+
+If you want to avoid shadcn components from being parsed by the linter:
+
+```
+  import frbosquet from 'eslint-config-frbosquet-tsnext'
+
+  export default [
+    ...frbosquet,
+    {
+      // your custom rules
+    },
+    {
+        ignores: ['components/ui/**/*'],
     }
   ]
 ```
