@@ -27,7 +27,9 @@ const eslintConfig = [
             'max-len': ['error', { code: 80, ignoreUrls: true, ignoreStrings: true, ignoreComments: true, ignoreTemplateLiterals: true }],
             'react/react-in-jsx-scope': 'off',
             'react/jsx-max-props-per-line': ['error', { 'maximum': { 'single': 2, 'multi': 1 } }],
-            'tailwindcss/no-custom-classname': ['error']
+            'tailwindcss/no-custom-classname': ['error'],
+            'no-console': 'error',
+            'no-debugger': 'error',
         }
     }
 ]
